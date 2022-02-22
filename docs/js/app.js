@@ -1,12 +1,6 @@
-const ingresos = [
-    new Ingreso('Salario', 2100.00),
-    new Ingreso('Venta casa', 5000.00)
-];
+const ingresos = [];
 
-const egresos = [
-    new Egreso('Alquiler',900),
-    new Egreso('Compras',400)
-]
+const egresos = []
 
 let cargarApp = () => {
     cargarCabecero();
@@ -108,4 +102,22 @@ const crearEgresoHTML = (egreso) =>{
     </div>
     `;
     return egresoHTML;
+}
+
+const agregarDato = () =>{
+    let forma = document.forms['forma'];
+    let tipo = forma['tipo'];
+    let descripcion = forma['descripcion'];
+    let valor = forma['valor'];
+    if(descripcion.value !== '' && valor.value !== ''){
+        if(tipo.value === 'ingreso'){
+            ingresos.push(new Ingreso(descripcion.value, +valor.value));
+            cargarCabecero();
+            cargarIngresos();
+        }else if(tipo.value === 'egreso'){
+            egresos.push(new Egreso(descripcion.value, +valor.value));
+            cargarCabecero();
+            cargarEgresos();
+        }
+    }
 }
