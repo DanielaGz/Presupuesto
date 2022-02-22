@@ -64,12 +64,20 @@ const crearIngresoHTML = (ingreso) =>{
             </div>
             <div class="elemento_eliminar">
                 <button class="elemento_eliminar--btn">
-                    <ion-icon name="close-circle-outline"></ion-icon>
+                    <ion-icon name="close-circle-outline"
+                    onclick="eliminarIngreso(${ingreso.id})"></ion-icon>
                 </button>
             </div>
         </div>
     </div>`;   
     return ingresoHTML;
+}
+
+const eliminarIngreso = (id) =>{
+    let indicieEliminar = ingresos.findIndex(ingreso => ingreso.id === id)
+    ingresos.splice(indicieEliminar,1);
+    cargarCabecero();
+    cargarIngresos();
 }
 
 const cargarEgresos = () =>{
@@ -95,7 +103,8 @@ const crearEgresoHTML = (egreso) =>{
             </div>
             <div class="elemento_eliminar">
                 <button class="elemento_eliminar--btn">
-                    <ion-icon name="close-circle-outline"></ion-icon>
+                    <ion-icon name="close-circle-outline"
+                    onclick="eliminarEgreso(${egreso.id})"></ion-icon>
                 </button>
             </div>
         </div>
@@ -120,4 +129,11 @@ const agregarDato = () =>{
             cargarEgresos();
         }
     }
+}
+
+const eliminarEgreso = (id) =>{
+    let indicieEliminar = egresos.findIndex(egreso => egreso.id === id)
+    egresos.splice(indicieEliminar,1);
+    cargarCabecero();
+    cargarEgresos();
 }
