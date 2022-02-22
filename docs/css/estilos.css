@@ -70,10 +70,12 @@ body {
 .presupuesto_ingreso {
     margin-bottom: 10px;
     background-color: #28B9B5;
+    border-radius: 10px;
 }
 
 .presupuesto_egreso {
     background-color: #FF5049;
+    border-radius: 10px;
 }
 
 .presupuesto_ingreso--texto,
